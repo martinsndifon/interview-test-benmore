@@ -1,7 +1,9 @@
 """
 Database Models.
 """
+
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -43,3 +45,38 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
+
+
+class Project(models.Model):
+    """Project object."""
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=255)
+    tasks = models.ManyToManyField("Task", blank=True)
+    description = models.TextField(blank=True, null=True)
+    due_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """Return string representation of the project."""
+        return self.title
+
+
+class Task(models.Model):
+    """Task object."""
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    due_date = models.DateField()
+    completed = models.BooleanField(default=False)
+    assigned = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """Return string representation of the task."""
+        return self.title
