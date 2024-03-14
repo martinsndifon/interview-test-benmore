@@ -102,7 +102,7 @@ class PrivateProjectApiTests(TestCase):
         payload = {
             "title": "Sample Project",
             "description": "Sample Description",
-            "due_date": "2024-03-14T10:20:30.000Z",
+            "due_date": "2024-03-14T10:20:30Z",
         }
         res = self.client.post(PROJECT_URL, payload)
 
@@ -156,7 +156,7 @@ class PrivateProjectApiTests(TestCase):
         payload = {
             "title": "Updated Title",
             "description": "Updated Description",
-            "due_date": "2024-03-14T10:20:30.000Z",
+            "due_date": "2024-03-14T10:20:30Z",
         }
         url = detail_url(project.id)
         res = self.client.put(url, payload)
@@ -197,7 +197,7 @@ class PrivateProjectApiTests(TestCase):
 
         res = self.client.delete(url)
 
-        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(Project.objects.filter(id=project.id).count(), 1)
 
     def test_updating_project_not_owned(self):
@@ -208,7 +208,7 @@ class PrivateProjectApiTests(TestCase):
         url = detail_url(project.id)
         res = self.client.put(url, payload)
 
-        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
         project.refresh_from_db()
         self.assertNotEqual(payload["title"], project.title)
         self.assertEqual(project.title, "Sample Project")
@@ -221,7 +221,7 @@ class PrivateProjectApiTests(TestCase):
         url = detail_url(project.id)
         res = self.client.patch(url, payload)
 
-        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
         project.refresh_from_db()
         self.assertNotEqual(payload["title"], project.title)
         self.assertEqual(project.title, "Sample Project")
