@@ -55,7 +55,8 @@ class Project(models.Model):
     title = models.CharField(max_length=255)
     task = models.ManyToManyField("Task", related_name="tasks", blank=True)
     description = models.TextField(blank=True, null=True)
-    due_date = models.DateField()
+    due_date = models.DateTimeField()
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -71,7 +72,7 @@ class Task(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    due_date = models.DateField()
+    due_date = models.DateTimeField()
     completed = models.BooleanField(default=False)
     assigned = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name="assigned_users", blank=True
