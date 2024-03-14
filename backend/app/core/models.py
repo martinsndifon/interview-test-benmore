@@ -53,7 +53,7 @@ class Project(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     title = models.CharField(max_length=255)
-    tasks = models.ManyToManyField("Task", blank=True)
+    task = models.ManyToManyField("Task", related_name="tasks", blank=True)
     description = models.TextField(blank=True, null=True)
     due_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -73,10 +73,28 @@ class Task(models.Model):
     description = models.TextField(blank=True, null=True)
     due_date = models.DateField()
     completed = models.BooleanField(default=False)
-    assigned = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
+    assigned = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="assigned_users", blank=True
+    )
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, related_name="task_project"
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Return string representation of the task."""
         return self.title
+
+    def save(self, *args, **kwargs):
+        """Override save method to update project tasks."""
+        super().save(*args, **kwargs)
+        if self.project:
+            self.project.task.add(self)
+
+    def delete(self, *args, **kwargs):
+        """Override delete method to remove task from project tasks."""
+        if self.project:
+            self.project.task.remove(self)
+        super().delete(*args, **kwargs)
