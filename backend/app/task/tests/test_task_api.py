@@ -123,7 +123,7 @@ class PrivateTaskApiTests(TestCase):
         payload = {
             "title": "Sample Project",
             "description": "Sample Description",
-            "due_date": "2024-03-14T10:20:30.000Z",
+            "due_date": "2024-03-14T10:20:30Z",
             "project": project.id,
         }
         res = self.client.post(TASK_URL, payload)
@@ -187,7 +187,7 @@ class PrivateTaskApiTests(TestCase):
         payload = {
             "title": "Updated Title",
             "description": "Updated Description",
-            "due_date": "2024-03-14T10:20:30.000Z",
+            "due_date": "2024-03-14T10:20:30Z",
             "project": project.id,
         }
         url = detail_url(task.id)
@@ -229,14 +229,14 @@ class PrivateTaskApiTests(TestCase):
         """Test deleting a task not owned by the user."""
         user2 = get_user_model().objects.create_user("user2@exampl.com", "testpass123")
 
-        project = create_sample_project(user=self.user)
+        project = create_sample_project(user=user2)
 
         task = create_sample_task(user=user2, project=project)
         url = detail_url(task.id)
 
         res = self.client.delete(url)
 
-        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(Task.objects.filter(id=task.id).count(), 1)
 
     def test_updating_task_not_owned(self):
@@ -249,14 +249,14 @@ class PrivateTaskApiTests(TestCase):
         payload = {
             "title": "Updated Title",
             "description": "Updated Description",
-            "due_date": "2024-03-14T10:20:30.000Z",
+            "due_date": "2024-03-14T10:20:30Z",
             "project": project.id,
         }
         url = detail_url(task.id)
 
         res = self.client.put(url, payload)
 
-        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
         task.refresh_from_db()
         self.assertNotEqual(payload["title"], task.title)
         self.assertEqual(task.title, "Sample task")
@@ -273,7 +273,7 @@ class PrivateTaskApiTests(TestCase):
 
         res = self.client.patch(url, payload)
 
-        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
         task.refresh_from_db()
         self.assertNotEqual(payload["title"], task.title)
         self.assertEqual(task.title, "Sample task")
