@@ -7,6 +7,8 @@ from task import views
 
 router = DefaultRouter()
 router.register("", views.TaskViewSet)
+router.register("status/filter", views.FilterTaskViewSet, basename="filter")
+router.register("status/complete", views.CompleteTaskViewSet, basename="complete")
 
 app_name = "task"
 
