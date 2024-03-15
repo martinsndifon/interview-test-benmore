@@ -94,6 +94,5 @@ class CompleteTaskViewSet(viewsets.GenericViewSet):
         serializer = self.get_serializer(task, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
 
-        # Update only the 'completed' field using serializer validation
         serializer.update(task, validated_data={"completed": True})
         return Response(serializer.data, status=status.HTTP_200_OK)

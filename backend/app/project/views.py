@@ -2,8 +2,15 @@
 views for the project APIs.
 """
 
-from drf_spectacular.utils import extend_schema
-from rest_framework import viewsets
+from django.contrib.postgres.search import SearchQuery, SearchRank
+from django.db.models import F
+
+from drf_spectacular.utils import (
+    extend_schema,
+    OpenApiParameter,
+    OpenApiTypes,
+)
+from rest_framework import viewsets, mixins
 from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.authentication import TokenAuthentication
 
@@ -18,7 +25,7 @@ class IsOwnerPermission(BasePermission):
         return request.user.is_authenticated and obj.user == request.user
 
 
-@extend_schema(tags=["projects"])
+@extend_schema(tags=["project"])
 class ProjectViewSet(viewsets.ModelViewSet):
     """Manage projects in the database."""
 
@@ -50,3 +57,38 @@ class ProjectViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """Create a new project."""
         serializer.save(user=self.request.user)
+
+
+@extend_schema(
+    tags=["project"],
+    parameters=[
+        OpenApiParameter(
+            "q",
+            OpenApiTypes.STR,
+            description="Enter a search query Eg: title of a project",
+        ),
+    ],
+)
+class ProjectSearchViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """View for managing project search APIs."""
+
+    serializer_class = serializers.ProjectSerializer
+    queryset = Project.objects.all()
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        """Return the projects that match the search query."""
+        queryset = self.queryset
+        search_query = self.request.query_params.get("q")
+
+        if search_query:
+            queryset = (
+                queryset.annotate(
+                    rank=SearchRank(F("search_vector"), SearchQuery(search_query))
+                )
+                .filter(rank__gt=0)
+                .order_by("-rank")
+            )
+
+        return queryset.order_by("-id").distinct()

@@ -7,6 +7,9 @@ from project import views
 
 router = DefaultRouter()
 router.register("", views.ProjectViewSet)
+router.register(
+    "projects/search", views.ProjectSearchViewSet, basename="project-search"
+)
 
 app_name = "project"
 

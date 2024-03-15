@@ -2,6 +2,7 @@
 Database Models.
 """
 
+from django.contrib.postgres.search import SearchVectorField
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import (
@@ -56,6 +57,7 @@ class Project(models.Model):
     task = models.ManyToManyField("Task", related_name="tasks", blank=True)
     description = models.TextField(blank=True, null=True)
     due_date = models.DateTimeField()
+    search_vector = SearchVectorField(null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
