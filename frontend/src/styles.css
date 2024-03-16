@@ -1,0 +1,30 @@
+.range-input {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 6px;
+  background: linear-gradient(
+    to left,
+    #ddd 0%,
+    #ddd 50%,
+    #fce97e 50%,
+    #fce97e 100%
+  );
+  border-radius: 5px;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+}
+
+.icon {
+  margin-left: -6px; /* Adjust as needed to control the overlap */
+  position: relative;
+  z-index: 1;
+  font-size: '5rem';
+}
+
+.icon:first-child {
+  margin-left: 0; /* Reset margin for the first icon */
+}
