@@ -1,3 +1,19 @@
+.material-icons-outlined.md-12 {
+  font-size: 12px;
+}
+.material-icons-outlined.md-18 {
+  font-size: 18px;
+}
+.material-icons-outlined.md-24 {
+  font-size: 24px;
+}
+.material-icons-outlined.md-36 {
+  font-size: 36px;
+}
+.material-icons-outlined.md-48 {
+  font-size: 48px;
+}
+
 .range-input {
   -webkit-appearance: none;
   width: 50%;
@@ -31,14 +47,14 @@
 
 .status-range {
   -webkit-appearance: none;
-  width: 70%;
-  height: 6px;
+  width: 65%;
+  height: 4px;
   background: linear-gradient(
     to left,
     #ddd 0%,
     #ddd 70%,
-    #48bcd1 70%,
-    #48bcd1 100%
+    #93c5fd 70%,
+    #93c5fd 100%
   );
   border-radius: 5px;
 }

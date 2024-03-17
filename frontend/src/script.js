@@ -11,7 +11,7 @@ inputText.addEventListener('input', () => {
   if (inputText.value === '') {
     closeBtn.style.display = 'none';
   } else {
-    closeBtn.style.display = 'block';
+    closeBtn.style.display = 'flex';
   }
 });
 
@@ -35,7 +35,7 @@ function showInfo(info) {
   // Dynamically generate content based on the selected info
   switch (info) {
     case 'project':
-      infoContent = '<p>The Project page</p>';
+      infoContent = '<p>The Project page test</p>';
       break;
     case 'task':
       infoContent = '<p>All tasks will be shown here</p>';

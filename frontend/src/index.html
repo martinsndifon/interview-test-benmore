@@ -24,12 +24,12 @@
       id="header"
     >
       <div
-        class="p-2 flex items-center justify-center absolute left-40 bg-stone-100 h-8 rounded-lg"
+        class="p-2 flex items-center justify-center absolute left-40 bg-stone-100 h-8 rounded-sm"
       >
-        <span class="material-icons-outlined">menu</span>
+        <i class="material-icons-outlined md-18">menu</i>
       </div>
       <div class="flex flex-row gap-2 justify-center items-center">
-        <h1 class="font-bold text-xl">My Project</h1>
+        <h1 class="font-extrabold text-xl">My Project</h1>
       </div>
       <div class="flex flex-row gap-2 justify-center items-center w-1/2 py-1">
         <div
@@ -41,30 +41,33 @@
             class="ml-1 w-4/5 rounded-l-full py-1 placeholder:text-sm pl-3 text-lg placeholder:text-grey-500 focus:outline-none"
             placeholder="Search project"
           />
-          <button class="pl-4 pr-16 hidden" id="close-btn">
-            <span class="material-icons-outlined">close</span>
+          <button
+            class="pl-4 pr-16 hidden items-center justify-center"
+            id="close-btn"
+          >
+            <i class="material-icons-outlined md-18">close</i>
           </button>
           <button
             id="search-btn"
             class="absolute right-[3px] flex h-[30px] w-[30px] items-center justify-center rounded-full bg-stone-900 p-[6px] text-stone-200"
           >
-            <span class="material-icons-outlined">search</span>
+            <i class="material-icons-outlined md-18">search</i>
           </button>
         </div>
-        <div
+        <button
           class="p-2 flex items-center justify-center rounded-md bg-stone-900 h-8 text-stone-200"
         >
-          <span class="material-icons-outlined">tune</span>
-        </div>
+          <i class="material-icons-outlined md-18">tune</i>
+        </button>
       </div>
-      <div
+      <button
         class="absolute py-3 px-5 flex items-center justify-center bg-teal-50 rounded-md right-1 shadow-md"
       >
-        <span class="material-icons-outlined">add_circle</span>
-      </div>
+        <i class="material-icons-outlined md-18">add_circle</i>
+      </button>
     </div>
 
-    <h2 class="my-1 font-medium">Home</h2>
+    <h2 class="my-1 font-semibold">Home</h2>
 
     <div
       id="dashboard"
@@ -78,57 +81,57 @@
       >
         <button
           id="project-btn"
-          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
           onclick="showInfo('project')"
         >
-          <span class="material-icons-outlined">business_center</span>Project
+          <i class="material-icons-outlined md-18">business_center</i>Project
         </button>
         <button
           id="task-btn"
-          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
           onclick="showInfo('task')"
         >
-          <span class="material-icons-outlined">task</span>My Task
+          <i class="material-icons-outlined md-18">task</i>My Task
         </button>
         <button
           id="team-btn"
-          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
           onclick="showInfo('team')"
         >
-          <span class="material-icons-outlined">group</span>Team
+          <i class="material-icons-outlined md-18">group</i>Team
         </button>
         <button
           id="file-btn"
-          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
           onclick="showInfo('file')"
         >
-          <span class="material-icons-outlined">description</span>File
+          <i class="material-icons-outlined md-18">description</i>File
         </button>
         <button
           id="calendar-btn"
-          class="py-3 flex flex-row justify-start gap-2 mb-10 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 mb-10 rounded-lg px-4"
           onclick="showInfo('calendar')"
         >
-          <span class="material-icons-outlined">calendar_month</span>Calender
+          <i class="material-icons-outlined md-18">calendar_month</i>Calender
         </button>
 
         <!-- Insights -->
-        <h2 class="font-medium mb-1">Insights</h2>
+        <h2 class="font-semibold mb-1">Insights</h2>
         <button
           id="inbox-btn"
-          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
           onclick="showInfo('inbox')"
         >
-          <span class="material-icons-outlined">mail</span>Inbox
+          <i class="material-icons-outlined md-18">mail</i>Inbox
         </button>
 
         <!-- Profile -->
         <button
           id="profile-btn"
-          class="absolute bottom-4 py-3 px-4 flex flex-row justify-start gap-2 rounded-lg"
+          class="absolute bottom-4 py-3 px-4 flex flex-row justify-start items-center gap-2 rounded-lg"
           onclick="showInfo('profile')"
         >
-          <span class="material-icons-outlined">account_circle</span>Profile
+          <i class="material-icons-outlined md-18">account_circle</i>Profile
         </button>
       </div>
 
@@ -136,14 +139,14 @@
         <div class="flex flex-row justify-between">
           <div class="flex flex-row gap-2 items-center">
             <button
-              class="border border-stone-300 flex flex-row justify-center gap-2 rounded-lg py-[6px] px-8 h-10 bg-stone-100"
+              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10 bg-stone-100 font-semibold"
             >
-              <span class="material-icons-outlined">view_agenda</span>List
+              <i class="material-icons-outlined md-18">view_agenda</i>List
             </button>
             <button
-              class="border border-stone-300 flex flex-row justify-center gap-2 rounded-lg py-[6px] px-8 h-10"
+              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10"
             >
-              <span class="material-icons-outlined">grid_view</span>Board
+              <i class="material-icons-outlined md-18">grid_view</i>Board
             </button>
           </div>
           <div class="flex flex-row gap-2 justify-center items-center">
@@ -151,7 +154,7 @@
             <button
               class="h-8 border items-center border-stone-300 flex flex-row justify-center gap-4 rounded-lg px-4"
             >
-              All <span class="material-icons-outlined">expand_more</span>
+              All <i class="material-icons-outlined">expand_more</i>
             </button>
           </div>
         </div>
@@ -163,31 +166,31 @@
           class="flex flex-row shadow-md py-2 bg-stone-50 rounded-lg items-center"
         >
           <h4
-            class="text-sm font-light flex justify-center items-center"
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
             style="width: 40%"
           >
             Project name
           </h4>
           <h4
-            class="text-sm font-light flex justify-center items-center"
-            style="width: 10%"
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 13%"
           >
             Due in
           </h4>
           <h4
-            class="text-sm font-light flex justify-center items-center"
-            style="width: 10%"
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 13%"
           >
             Tasks
           </h4>
           <h4
-            class="text-sm font-light flex justify-center items-center"
-            style="width: 20%"
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 14%"
           >
             Status
           </h4>
           <h4
-            class="text-sm font-light flex justify-center items-center"
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
             style="width: 20%"
           >
             Members
@@ -201,32 +204,32 @@
             style="width: 40%"
           >
             <div class="p-2">
-              <span class="material-icons-outlined">account_circle</span>
+              <i class="material-icons-outlined md-18">account_circle</i>
             </div>
             <div class="flex flex-col gap-0">
-              <h4 class="text-sm font-medium">World Wildlife Redesign</h4>
-              <p class="text-xs font-light">Oct 13, 2021</p>
+              <h4 class="text-sm font-semibold">World Wildlife Redesign</h4>
+              <p class="text-xs font-semibold text-stone-400">Oct 13, 2021</p>
             </div>
           </div>
           <div
-            class="h-8 bg-teal-50 text-sm py-[6px] px-3 justify-center items-center rounded-md"
-            style="width: 10%"
+            class="flex bg-teal-50 text-sm font-semibold rounded-md py-2 justify-center items-center"
+            style="width: 13%"
           >
             3d, 12m
           </div>
           <div
             class="flex flex-col justify-center items-center"
-            style="width: 10%"
+            style="width: 13%"
           >
-            <h4 class="text-sm font-medium">90/148</h4>
-            <p class="text-xs font-light">Tasks</p>
+            <h4 class="text-sm font-semibold">90/148</h4>
+            <p class="text-xs font-semibold text-stone-400">Tasks</p>
           </div>
           <div
             class="flex flex-col gap-0 justify-center items-center"
-            style="width: 20%"
+            style="width: 14%"
           >
-            <div class="flex flex-row gap-1 text-sm">
-              <span class="material-icons-outlined">linear_scale</span>Progress
+            <div class="flex flex-row gap-1 text-sm text-blue-300">
+              <i class="material-icons-outlined md-18">linear_scale</i>Progress
             </div>
             <input type="range" class="status-range" title="range" />
           </div>
@@ -235,11 +238,11 @@
             style="width: 20%"
           >
             <div class="flex flex-row justify-between">
-              <span class="material-icons-outlined icon">account_circle</span>
-              <span class="material-icons-outlined icon">account_circle</span>
-              <span class="material-icons-outlined icon">account_circle</span>
+              <i class="material-icons-outlined icon">account_circle</i>
+              <i class="material-icons-outlined icon">account_circle</i>
+              <i class="material-icons-outlined icon">account_circle</i>
             </div>
-            <span class="material-icons-outlined">more_vert</span>
+            <i class="material-icons-outlined md-18">more_vert</i>
           </div>
         </div>
 
@@ -252,11 +255,11 @@
         style="width: 20%"
       >
         <div class="flex flex-row justify-between py-2">
-          <h2 class="font-medium text-lg">Upcoming meetings</h2>
+          <h2 class="font-semibold text-lg">Upcoming meetings</h2>
           <h3 class="underline font-medium text-indigo-500">See all</h3>
         </div>
         <div class="flex flex-col bg-teal-50 rounded-2xl p-2 gap-3">
-          <h2 class="font-medium text-lg">Meeting Name</h2>
+          <h2 class="font-semibold text-lg">Meeting Name</h2>
           <p class="text-xs">
             The meeting aims to identify areas for improvement and ensure the
             designs align with user needs and business goals
@@ -265,20 +268,20 @@
             <div class="flex flex-row justify-between">
               <div class="flex flex-col gap-0">
                 <h3 class="text-xs">Time</h3>
-                <p class="font-medium">12:00-12:30</p>
+                <p class="font-semibold">12:00-12:30</p>
               </div>
               <div class="flex flex-col gap-0">
                 <h3 class="text-xs">Duration</h3>
-                <p class="font-medium">30 min</p>
+                <p class="font-semibold">30 min</p>
               </div>
             </div>
             <div class="flex flex-col gap-1">
               <h4 class="text-sm">Invited members</h4>
               <div class="flex flex-row gap-0">
-                <span class="material-icons-outlined icon">account_circle</span>
-                <span class="material-icons-outlined icon">account_circle</span>
-                <span class="material-icons-outlined icon">account_circle</span>
-                <span class="material-icons-outlined icon">account_circle</span>
+                <i class="material-icons-outlined icon">account_circle</i>
+                <i class="material-icons-outlined icon">account_circle</i>
+                <i class="material-icons-outlined icon">account_circle</i>
+                <i class="material-icons-outlined icon">account_circle</i>
               </div>
             </div>
             <button
@@ -289,12 +292,12 @@
           </div>
         </div>
         <div>
-          <h2 class="font-medium text-lg my-3">Upcoming Task</h2>
+          <h2 class="font-semibold text-lg my-3">Upcoming Task</h2>
           <div
             class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
           >
             <div class="flex flex-row justify-between items-center">
-              <h3 class="font-medium text-sm">Product Planning</h3>
+              <h3 class="font-semibold text-sm">Product Planning</h3>
               <div class="flex flex-row gap-1 justify-center items-center">
                 <div
                   class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
@@ -302,18 +305,21 @@
                   Urgent
                 </div>
 
-                <span class="material-icons-outlined">more_vert</span>
+                <i class="material-icons-outlined md-18">more_vert</i>
               </div>
             </div>
             <div class="flex flex-col gap-0 my-1">
               <div class="flex flex-row">
-                <span class="material-icons-outlined icon">account_circle</span>
-                <span class="material-icons-outlined icon">account_circle</span>
-                <span class="material-icons-outlined icon">account_circle</span>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
               </div>
-              <div class="flex flex-row gap-4 items-center text-sm">
+              <div class="flex flex-row gap-4 items-center text-xs">
                 <input type="range" class="range-input" title="range" />
-                <span>10:00 - 11:00</span>
+                <div class="flex flex-row gap-1 items-center justify-center">
+                  <i class="material-icons-outlined md-12">schedule</i>
+                  <span>10:00 - 11:00</span>
+                </div>
               </div>
             </div>
             <h4 class="text-sm font-medium">Management</h4>
@@ -323,7 +329,7 @@
             class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
           >
             <div class="flex flex-row justify-between items-center">
-              <h3 class="font-medium text-sm">Product Planning</h3>
+              <h3 class="font-semibold text-sm">Product Planning</h3>
               <div class="flex flex-row gap-1 justify-center items-center">
                 <div
                   class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
@@ -331,18 +337,21 @@
                   Urgent
                 </div>
 
-                <span class="material-icons-outlined">more_vert</span>
+                <i class="material-icons-outlined md-18">more_vert</i>
               </div>
             </div>
             <div class="flex flex-col gap-0 my-1">
               <div class="flex flex-row">
-                <span class="material-icons-outlined icon">account_circle</span>
-                <span class="material-icons-outlined icon">account_circle</span>
-                <span class="material-icons-outlined icon">account_circle</span>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
               </div>
-              <div class="flex flex-row gap-4 items-center text-sm">
+              <div class="flex flex-row gap-4 items-center text-xs">
                 <input type="range" class="range-input" title="range" />
-                <span>10:00 - 11:00</span>
+                <div class="flex flex-row gap-1 items-center justify-center">
+                  <i class="material-icons-outlined md-12">schedule</i>
+                  <span>10:00 - 11:00</span>
+                </div>
               </div>
             </div>
             <h4 class="text-sm font-medium">Management</h4>
