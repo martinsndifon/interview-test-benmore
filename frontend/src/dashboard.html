@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="./scripts/auth.js"></script>
+    <link href="./styles/output.css" rel="stylesheet" />
+    <link href="./styles/dashboard.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="./scripts/dashboard.js" defer></script>
+    <title>BenMore</title>
+  </head>
+  <body class="p-4 h-dvh m-0">
+    <div
+      class="flex flex-row relative gap-4 items-center justify-center"
+      id="header"
+    >
+      <div
+        class="p-2 flex items-center justify-center absolute left-40 bg-stone-100 h-8 rounded-sm"
+      >
+        <i class="material-icons-outlined md-18">menu</i>
+      </div>
+      <div class="flex flex-row gap-2 justify-center items-center">
+        <h1 class="font-extrabold text-xl">My Project</h1>
+      </div>
+      <div class="flex flex-row gap-2 justify-center items-center w-1/2 py-1">
+        <div
+          class="relative flex w-4/5 flex-row items-center px-2 rounded-full border border-stone-500 focus-within:border-stone-900 shadow-md"
+        >
+          <input
+            id="input-text"
+            type="text"
+            class="ml-1 w-4/5 rounded-l-full py-1 placeholder:text-sm pl-3 text-lg placeholder:text-grey-500 focus:outline-none"
+            placeholder="Search project"
+          />
+          <button
+            class="pl-4 pr-16 hidden items-center justify-center"
+            id="close-btn"
+          >
+            <i class="material-icons-outlined md-18">close</i>
+          </button>
+          <button
+            id="search-btn"
+            class="absolute right-[3px] flex h-[30px] w-[30px] items-center justify-center rounded-full bg-stone-900 p-[6px] text-stone-200"
+          >
+            <i class="material-icons-outlined md-18">search</i>
+          </button>
+        </div>
+        <button
+          class="p-2 flex items-center justify-center rounded-md bg-stone-900 h-8 text-stone-200"
+        >
+          <i class="material-icons-outlined md-18">tune</i>
+        </button>
+      </div>
+      <button
+        class="absolute py-3 px-5 flex items-center justify-center bg-teal-50 rounded-md right-1 shadow-md"
+      >
+        <i class="material-icons-outlined md-18">add_circle</i>
+      </button>
+    </div>
+
+    <h2 class="my-1 font-semibold">Home</h2>
+
+    <div
+      id="dashboard"
+      class="flex flex-row"
+      style="height: calc(100% - 4.5rem)"
+    >
+      <div
+        id="menu"
+        class="flex flex-col border-r relative border-stone-200 px-2"
+        style="width: 15%"
+      >
+        <button
+          id="project-btn"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          onclick="showInfo('project')"
+        >
+          <i class="material-icons-outlined md-18">business_center</i>Project
+        </button>
+        <button
+          id="task-btn"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          onclick="showInfo('task')"
+        >
+          <i class="material-icons-outlined md-18">task</i>My Task
+        </button>
+        <button
+          id="team-btn"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          onclick="showInfo('team')"
+        >
+          <i class="material-icons-outlined md-18">group</i>Team
+        </button>
+        <button
+          id="file-btn"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          onclick="showInfo('file')"
+        >
+          <i class="material-icons-outlined md-18">description</i>File
+        </button>
+        <button
+          id="calendar-btn"
+          class="py-3 flex flex-row justify-start items-center gap-2 mb-10 rounded-lg px-4"
+          onclick="showInfo('calendar')"
+        >
+          <i class="material-icons-outlined md-18">calendar_month</i>Calender
+        </button>
+
+        <!-- Insights -->
+        <h2 class="font-semibold mb-1">Insights</h2>
+        <button
+          id="inbox-btn"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          onclick="showInfo('inbox')"
+        >
+          <i class="material-icons-outlined md-18">mail</i>Inbox
+        </button>
+
+        <!-- Profile -->
+        <button
+          id="profile-btn"
+          class="absolute bottom-4 py-3 px-4 flex flex-row justify-start items-center gap-2 rounded-lg"
+          onclick="showInfo('profile')"
+        >
+          <i class="material-icons-outlined md-18 text-stone-600"
+            >account_circle</i
+          >Profile
+        </button>
+      </div>
+
+      <div class="overflow-y-auto px-2" style="width: 65%">
+        <div class="flex flex-row justify-between">
+          <div class="flex flex-row gap-2 items-center">
+            <button
+              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10 bg-stone-100 font-semibold"
+            >
+              <i class="material-icons-outlined md-18">view_agenda</i>List
+            </button>
+            <button
+              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10"
+            >
+              <i class="material-icons-outlined md-18">grid_view</i>Board
+            </button>
+          </div>
+          <div class="flex flex-row gap-2 justify-center items-center">
+            <h3 class="py-3 rounded-lg px-4">Show</h3>
+            <button
+              class="h-8 border items-center border-stone-300 flex flex-row justify-center gap-4 rounded-lg px-4"
+            >
+              All <i class="material-icons-outlined">expand_more</i>
+            </button>
+          </div>
+        </div>
+
+        <h4 class="text-xs font-medium m-2">17 results found</h4>
+
+        <!-- Project headings -->
+        <div
+          class="flex flex-row shadow-md py-2 bg-stone-50 rounded-lg items-center"
+        >
+          <h4
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 40%"
+          >
+            Project name
+          </h4>
+          <h4
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 13%"
+          >
+            Due in
+          </h4>
+          <h4
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 13%"
+          >
+            Tasks
+          </h4>
+          <h4
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 14%"
+          >
+            Status
+          </h4>
+          <h4
+            class="text-xs font-semibold text-stone-500 flex justify-center items-center"
+            style="width: 20%"
+          >
+            Members
+          </h4>
+        </div>
+
+        <!-- Project card -->
+        <div class="flex flex-row py-4 shadow-md rounded-lg items-center mt-2">
+          <div
+            class="flex flex-row justify-center items-center gap-4"
+            style="width: 40%"
+          >
+            <div class="p-2 text-stone-600">
+              <i class="material-icons-outlined md-18">account_circle</i>
+            </div>
+            <div class="flex flex-col gap-0">
+              <h4 class="text-sm font-semibold">World Wildlife Redesign</h4>
+              <p class="text-xs font-semibold text-stone-400">Oct 13, 2021</p>
+            </div>
+          </div>
+          <div
+            class="flex bg-teal-50 text-sm font-semibold rounded-md py-2 justify-center items-center"
+            style="width: 13%"
+          >
+            3d, 12m
+          </div>
+          <div
+            class="flex flex-col justify-center items-center"
+            style="width: 13%"
+          >
+            <h4 class="text-sm font-semibold">90/148</h4>
+            <p class="text-xs font-semibold text-stone-400">Tasks</p>
+          </div>
+          <div
+            class="flex flex-col gap-0 justify-center items-center"
+            style="width: 14%"
+          >
+            <div class="flex flex-row gap-1 text-sm text-blue-300">
+              <i class="material-icons-outlined md-18">linear_scale</i>Progress
+            </div>
+            <input type="range" class="status-range" title="range" />
+          </div>
+          <div
+            class="flex flex-row gap-2 justify-center items-center text-sm"
+            style="width: 20%"
+          >
+            <div class="flex flex-row justify-between text-stone-600">
+              <i class="material-icons-outlined icon">account_circle</i>
+              <i class="material-icons-outlined icon">account_circle</i>
+              <i class="material-icons-outlined icon">account_circle</i>
+            </div>
+            <i class="material-icons-outlined md-18">more_vert</i>
+          </div>
+        </div>
+
+        <!-- Content will be dynamically generated and populated here -->
+        <div id="content"></div>
+      </div>
+
+      <aside
+        class="p-2 overflow-y-auto border-l border-stone-200 scroll-container"
+        style="width: 20%"
+      >
+        <div class="flex flex-row justify-between py-2">
+          <h2 class="font-semibold text-lg">Upcoming meetings</h2>
+          <h3 class="underline font-medium text-indigo-500">See all</h3>
+        </div>
+        <div class="flex flex-col bg-teal-50 rounded-2xl py-2 px-3 gap-3">
+          <h2 class="font-semibold text-lg">Meeting Name</h2>
+          <p class="text-xs">
+            The meeting aims to identify areas for improvement and ensure the
+            designs align with user needs and business goals
+          </p>
+          <div class="flex flex-col rounded-2xl bg-white p-3 gap-3">
+            <div class="flex flex-row justify-between">
+              <div class="flex flex-col gap-0">
+                <h3 class="text-xs">Time</h3>
+                <p class="font-semibold">12:00-12:30</p>
+              </div>
+              <div class="flex flex-col gap-0">
+                <h3 class="text-xs">Duration</h3>
+                <p class="font-semibold">30 min</p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h4 class="text-sm">Invited members</h4>
+              <div class="flex flex-row gap-0 text-stone-600">
+                <i class="material-icons-outlined icon">account_circle</i>
+                <i class="material-icons-outlined icon">account_circle</i>
+                <i class="material-icons-outlined icon">account_circle</i>
+                <i class="material-icons-outlined icon">account_circle</i>
+              </div>
+            </div>
+            <button
+              class="px-4 py-2 bg-indigo-500 rounded-full w-4/5 mb-2 mt-6 mx-auto font-medium text-sm text-indigo-50"
+            >
+              Join meeting
+            </button>
+          </div>
+        </div>
+        <div>
+          <h2 class="font-semibold text-lg my-3">Upcoming Task</h2>
+          <div
+            class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
+          >
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="font-semibold text-sm">Product Planning</h3>
+              <div class="flex flex-row gap-1 justify-center items-center">
+                <div
+                  class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
+                >
+                  Urgent
+                </div>
+
+                <i class="material-icons-outlined md-18">more_vert</i>
+              </div>
+            </div>
+            <div class="flex flex-col gap-0 my-1">
+              <div class="flex flex-row text-stone-600">
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+              </div>
+              <div class="flex flex-row gap-4 items-center text-xs">
+                <input type="range" class="range-input" title="range" />
+                <div class="flex flex-row gap-1 items-center justify-center">
+                  <i class="material-icons-outlined md-12">schedule</i>
+                  <span>10:00 - 11:00</span>
+                </div>
+              </div>
+            </div>
+            <h4 class="text-sm font-medium">Management</h4>
+          </div>
+
+          <div
+            class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
+          >
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="font-semibold text-sm">Product Planning</h3>
+              <div class="flex flex-row gap-1 justify-center items-center">
+                <div
+                  class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
+                >
+                  Urgent
+                </div>
+
+                <i class="material-icons-outlined md-18">more_vert</i>
+              </div>
+            </div>
+            <div class="flex flex-col gap-0 my-1">
+              <div class="flex flex-row text-stone-600">
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+                <i class="material-icons-outlined md-18 icon">account_circle</i>
+              </div>
+              <div class="flex flex-row gap-4 items-center text-xs">
+                <input type="range" class="range-input" title="range" />
+                <div class="flex flex-row gap-1 items-center justify-center">
+                  <i class="material-icons-outlined md-12">schedule</i>
+                  <span>10:00 - 11:00</span>
+                </div>
+              </div>
+            </div>
+            <h4 class="text-sm font-medium">Management</h4>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </body>
+</html>
