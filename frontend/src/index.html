@@ -20,16 +20,18 @@
   </head>
   <body class="p-4 h-dvh m-0">
     <div
-      class="flex flex-row relative gap-4 border items-center border-red-500 justify-center"
+      class="flex flex-row relative gap-4 items-center justify-center"
       id="header"
     >
+      <div
+        class="p-2 flex items-center justify-center absolute left-40 bg-stone-100 h-8 rounded-lg"
+      >
+        <span class="material-icons-outlined">menu</span>
+      </div>
       <div class="flex flex-row gap-2 justify-center items-center">
-        <div class="p-2 flex items-center justify-center">
-          <span class="material-icons-outlined">menu</span>
-        </div>
         <h1 class="font-bold text-xl">My Project</h1>
       </div>
-      <div class="flex flex-row gap-2 justify-center w-1/2 py-1">
+      <div class="flex flex-row gap-2 justify-center items-center w-1/2 py-1">
         <div
           class="relative flex w-4/5 flex-row items-center px-2 rounded-full border border-stone-500 focus-within:border-stone-900 shadow-md"
         >
@@ -50,54 +52,61 @@
           </button>
         </div>
         <div
-          class="p-2 flex items-center justify-center rounded-md bg-stone-900 h-10 w-10 text-stone-200"
+          class="p-2 flex items-center justify-center rounded-md bg-stone-900 h-8 text-stone-200"
         >
           <span class="material-icons-outlined">tune</span>
         </div>
       </div>
       <div
-        class="absolute py-3 px-5 flex items-center justify-center bg-teal-50 rounded-md right-1"
+        class="absolute py-3 px-5 flex items-center justify-center bg-teal-50 rounded-md right-1 shadow-md"
       >
         <span class="material-icons-outlined">add_circle</span>
       </div>
     </div>
+
     <h2 class="my-1 font-medium">Home</h2>
+
     <div
       id="dashboard"
       class="flex flex-row"
-      style="height: calc(100% - 3.5rem)"
+      style="height: calc(100% - 4.5rem)"
     >
       <div
         id="menu"
-        class="flex flex-col border relative border-red-500"
+        class="flex flex-col border-r relative border-stone-200 px-2"
         style="width: 15%"
       >
         <button
-          class="py-3 border border-red-500 flex flex-row justify-start gap-2 rounded-lg px-4"
+          id="project-btn"
+          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
           onclick="showInfo('project')"
         >
           <span class="material-icons-outlined">business_center</span>Project
         </button>
         <button
-          class="py-3 border border-red-500 flex flex-row justify-start gap-2 rounded-lg px-4"
+          id="task-btn"
+          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
           onclick="showInfo('task')"
         >
           <span class="material-icons-outlined">task</span>My Task
         </button>
         <button
-          class="py-3 border border-red-500 flex flex-row justify-start gap-2 rounded-lg px-4"
+          id="team-btn"
+          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
           onclick="showInfo('team')"
         >
           <span class="material-icons-outlined">group</span>Team
         </button>
         <button
-          class="py-3 border border-red-500 flex flex-row justify-start gap-2 rounded-lg px-4"
+          id="file-btn"
+          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
           onclick="showInfo('file')"
         >
           <span class="material-icons-outlined">description</span>File
         </button>
         <button
-          class="py-3 border border-red-500 flex flex-row justify-start gap-2 mb-10 rounded-lg px-4"
+          id="calendar-btn"
+          class="py-3 flex flex-row justify-start gap-2 mb-10 rounded-lg px-4"
           onclick="showInfo('calendar')"
         >
           <span class="material-icons-outlined">calendar_month</span>Calender
@@ -106,7 +115,8 @@
         <!-- Insights -->
         <h2 class="font-medium mb-1">Insights</h2>
         <button
-          class="py-3 border border-red-500 flex flex-row justify-start gap-2 rounded-lg px-4"
+          id="inbox-btn"
+          class="py-3 flex flex-row justify-start gap-2 rounded-lg px-4"
           onclick="showInfo('inbox')"
         >
           <span class="material-icons-outlined">mail</span>Inbox
@@ -114,26 +124,24 @@
 
         <!-- Profile -->
         <button
-          class="absolute bottom-4 py-3 px-4 border flex flex-row justify-start gap-2 border-red-500 rounded-lg"
+          id="profile-btn"
+          class="absolute bottom-4 py-3 px-4 flex flex-row justify-start gap-2 rounded-lg"
           onclick="showInfo('profile')"
         >
           <span class="material-icons-outlined">account_circle</span>Profile
         </button>
       </div>
 
-      <div
-        class="border border-red-500 overflow-y-auto px-2"
-        style="width: 60%"
-      >
+      <div class="overflow-y-auto px-2" style="width: 65%">
         <div class="flex flex-row justify-between">
-          <div class="flex flex-row gap-2">
+          <div class="flex flex-row gap-2 items-center">
             <button
-              class="py-3 border border-stone-300 flex flex-row justify-center gap-2 rounded-lg px-10"
+              class="border border-stone-300 flex flex-row justify-center gap-2 rounded-lg py-[6px] px-8 h-10 bg-stone-100"
             >
               <span class="material-icons-outlined">view_agenda</span>List
             </button>
             <button
-              class="py-3 border border-stone-300 flex flex-row justify-center gap-2 rounded-lg px-10"
+              class="border border-stone-300 flex flex-row justify-center gap-2 rounded-lg py-[6px] px-8 h-10"
             >
               <span class="material-icons-outlined">grid_view</span>Board
             </button>
@@ -147,36 +155,101 @@
             </button>
           </div>
         </div>
-        <h4 class="text-sm font-light m-2">17 results found</h4>
+
+        <h4 class="text-xs font-medium m-2">17 results found</h4>
 
         <!-- Project headings -->
         <div
-          class="flex flex-row shadow-md py-2 border border-red-500 bg-stone-50 rounded-lg"
+          class="flex flex-row shadow-md py-2 bg-stone-50 rounded-lg items-center"
         >
-          <h4 class="text-sm font-light flex justify-center" style="width: 40%">
-            Task name
+          <h4
+            class="text-sm font-light flex justify-center items-center"
+            style="width: 40%"
+          >
+            Project name
           </h4>
-          <h4 class="text-sm font-light flex justify-center" style="width: 10%">
+          <h4
+            class="text-sm font-light flex justify-center items-center"
+            style="width: 10%"
+          >
             Due in
           </h4>
-          <h4 class="text-sm font-light flex justify-center" style="width: 10%">
+          <h4
+            class="text-sm font-light flex justify-center items-center"
+            style="width: 10%"
+          >
             Tasks
           </h4>
-          <h4 class="text-sm font-light flex justify-center" style="width: 20%">
+          <h4
+            class="text-sm font-light flex justify-center items-center"
+            style="width: 20%"
+          >
             Status
           </h4>
-          <h4 class="text-sm font-light flex justify-center" style="width: 20%">
+          <h4
+            class="text-sm font-light flex justify-center items-center"
+            style="width: 20%"
+          >
             Members
           </h4>
+        </div>
+
+        <!-- Project card -->
+        <div class="flex flex-row py-4 shadow-md rounded-lg items-center mt-2">
+          <div
+            class="flex flex-row justify-center items-center gap-4"
+            style="width: 40%"
+          >
+            <div class="p-2">
+              <span class="material-icons-outlined">account_circle</span>
+            </div>
+            <div class="flex flex-col gap-0">
+              <h4 class="text-sm font-medium">World Wildlife Redesign</h4>
+              <p class="text-xs font-light">Oct 13, 2021</p>
+            </div>
+          </div>
+          <div
+            class="h-8 bg-teal-50 text-sm py-[6px] px-3 justify-center items-center rounded-md"
+            style="width: 10%"
+          >
+            3d, 12m
+          </div>
+          <div
+            class="flex flex-col justify-center items-center"
+            style="width: 10%"
+          >
+            <h4 class="text-sm font-medium">90/148</h4>
+            <p class="text-xs font-light">Tasks</p>
+          </div>
+          <div
+            class="flex flex-col gap-0 justify-center items-center"
+            style="width: 20%"
+          >
+            <div class="flex flex-row gap-1 text-sm">
+              <span class="material-icons-outlined">linear_scale</span>Progress
+            </div>
+            <input type="range" class="status-range" title="range" />
+          </div>
+          <div
+            class="flex flex-row gap-2 justify-center items-center text-sm"
+            style="width: 20%"
+          >
+            <div class="flex flex-row justify-between">
+              <span class="material-icons-outlined icon">account_circle</span>
+              <span class="material-icons-outlined icon">account_circle</span>
+              <span class="material-icons-outlined icon">account_circle</span>
+            </div>
+            <span class="material-icons-outlined">more_vert</span>
+          </div>
         </div>
 
         <!-- Content will be dynamically generated and populated here -->
         <div id="content"></div>
       </div>
 
-      <div
-        class="p-2 overflow-y-auto border-l border-stone-500"
-        style="width: 25%"
+      <aside
+        class="p-2 overflow-y-auto border-l border-stone-200 scroll-container"
+        style="width: 20%"
       >
         <div class="flex flex-row justify-between py-2">
           <h2 class="font-medium text-lg">Upcoming meetings</h2>
@@ -191,11 +264,11 @@
           <div class="flex flex-col rounded-2xl bg-white p-2 gap-3">
             <div class="flex flex-row justify-between">
               <div class="flex flex-col gap-0">
-                <h3 class="text-sm">Time</h3>
-                <p class="font-medium">12:00 - 12:30</p>
+                <h3 class="text-xs">Time</h3>
+                <p class="font-medium">12:00-12:30</p>
               </div>
               <div class="flex flex-col gap-0">
-                <h3 class="text-sm">Duration</h3>
+                <h3 class="text-xs">Duration</h3>
                 <p class="font-medium">30 min</p>
               </div>
             </div>
@@ -209,7 +282,7 @@
               </div>
             </div>
             <button
-              class="px-4 py-2 bg-indigo-500 rounded-xl w-4/5 mb-2 mt-4 mx-auto"
+              class="px-4 py-2 bg-indigo-500 rounded-full w-4/5 mb-2 mt-6 mx-auto"
             >
               Join meeting
             </button>
@@ -220,11 +293,11 @@
           <div
             class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
           >
-            <div class="flex flex-row justify-between border border-red-500">
-              <h3 class="font-medium tracking-wide">Product Planning</h3>
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="font-medium text-sm">Product Planning</h3>
               <div class="flex flex-row gap-1 justify-center items-center">
                 <div
-                  class="bg-orange-100 rounded-full font-medium text-sm text-orange-300 px-4 py-1"
+                  class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
                 >
                   Urgent
                 </div>
@@ -238,9 +311,7 @@
                 <span class="material-icons-outlined icon">account_circle</span>
                 <span class="material-icons-outlined icon">account_circle</span>
               </div>
-              <div
-                class="flex flex-row gap-4 items-center text-sm border border-red-500"
-              >
+              <div class="flex flex-row gap-4 items-center text-sm">
                 <input type="range" class="range-input" title="range" />
                 <span>10:00 - 11:00</span>
               </div>
@@ -251,11 +322,11 @@
           <div
             class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
           >
-            <div class="flex flex-row justify-between border border-red-500">
-              <h3 class="font-medium tracking-wide">Product Planning</h3>
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="font-medium text-sm">Product Planning</h3>
               <div class="flex flex-row gap-1 justify-center items-center">
                 <div
-                  class="bg-orange-100 rounded-full font-medium text-sm text-orange-300 px-4 py-1"
+                  class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
                 >
                   Urgent
                 </div>
@@ -269,9 +340,7 @@
                 <span class="material-icons-outlined icon">account_circle</span>
                 <span class="material-icons-outlined icon">account_circle</span>
               </div>
-              <div
-                class="flex flex-row gap-4 items-center text-sm border border-red-500"
-              >
+              <div class="flex flex-row gap-4 items-center text-sm">
                 <input type="range" class="range-input" title="range" />
                 <span>10:00 - 11:00</span>
               </div>
@@ -279,7 +348,7 @@
             <h4 class="text-sm font-medium">Management</h4>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
 
     <script type="text/javascript" src="script.js"></script>

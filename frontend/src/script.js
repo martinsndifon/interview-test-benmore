@@ -1,5 +1,6 @@
 let inputText = document.getElementById('input-text');
 let closeBtn = document.getElementById('close-btn');
+let projectBtn = document.getElementById('project-btn');
 
 closeBtn.addEventListener('click', () => {
   inputText.value = '';
@@ -19,9 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function showInfo(info) {
+  let menuBtn = document.getElementById(info + '-btn');
   let content = document.getElementById('content');
-
   let infoContent = '';
+
+  const menu = document.getElementById('menu');
+  const buttons = menu.querySelectorAll('button');
+  buttons.forEach((button) => {
+    button.classList.remove('active');
+  });
+
+  menuBtn.classList.add('active');
 
   // Dynamically generate content based on the selected info
   switch (info) {
