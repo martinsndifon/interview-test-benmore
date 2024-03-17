@@ -1,6 +1,7 @@
 let inputText = document.getElementById('input-text');
 let closeBtn = document.getElementById('close-btn');
 let projectBtn = document.getElementById('project-btn');
+let resultCount = document.getElementById('resultCount');
 
 closeBtn.addEventListener('click', () => {
   inputText.value = '';
@@ -126,6 +127,7 @@ function showInfo(info) {
               });
             }
             content.innerHTML = infoContent;
+            resultCount.innerText = res.length;
           },
           error: function (xhr, status, error) {
             window.location.href = 'signin.html';
