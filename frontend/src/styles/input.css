@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Roboto', 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Roboto', 'Poppins', 'Montserrat', ui-sans-serif, system-ui,
+    sans-serif;
 }

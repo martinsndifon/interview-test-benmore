@@ -146,6 +146,8 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://192.168.0.3:5500",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://192.168.0.3:5500",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True

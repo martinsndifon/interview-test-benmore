@@ -67,7 +67,7 @@
 
 .active {
   background-color: #f5f5f4;
-  font-weight: 500;
+  color: #0c0a09;
 }
 
 .scroll-container::-webkit-scrollbar {

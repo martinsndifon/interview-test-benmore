@@ -14,10 +14,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
     <script type="text/javascript" src="./scripts/dashboard.js" defer></script>
+    <script
+      type="text/javascript"
+      src="./scripts/dashboardModals.js"
+      defer
+    ></script>
     <title>BenMore</title>
   </head>
   <body class="p-4 h-dvh m-0">
@@ -31,7 +36,7 @@
         <i class="material-icons-outlined md-18">menu</i>
       </div>
       <div class="flex flex-row gap-2 justify-center items-center">
-        <h1 class="font-extrabold text-xl">My Project</h1>
+        <h1 class="font-extrabold text-xl text-stone-600">My Project</h1>
       </div>
       <div class="flex flex-row gap-2 justify-center items-center w-1/2 py-1">
         <div
@@ -51,25 +56,26 @@
           </button>
           <button
             id="search-btn"
-            class="absolute right-[3px] flex h-[30px] w-[30px] items-center justify-center rounded-full bg-stone-900 p-[6px] text-stone-200"
+            class="absolute right-[3px] flex h-[30px] w-[30px] items-center justify-center rounded-full bg-stone-700 p-[6px] text-stone-200"
           >
             <i class="material-icons-outlined md-18">search</i>
           </button>
         </div>
         <button
-          class="p-2 flex items-center justify-center rounded-md bg-stone-900 h-8 text-stone-200"
+          class="p-2 flex items-center justify-center rounded-md bg-stone-700 h-8 text-stone-200"
         >
           <i class="material-icons-outlined md-18">tune</i>
         </button>
       </div>
       <button
+        id="openProjectModalBtn"
         class="absolute py-3 px-5 flex items-center justify-center bg-teal-50 rounded-md right-1 shadow-md"
       >
         <i class="material-icons-outlined md-18">add_circle</i>
       </button>
     </div>
 
-    <h2 class="my-1 font-semibold">Home</h2>
+    <h2 class="my-1 font-bold text-stone-600">Home</h2>
 
     <div
       id="dashboard"
@@ -83,45 +89,45 @@
       >
         <button
           id="project-btn"
-          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4 font-semibold text-stone-500"
           onclick="showInfo('project')"
         >
           <i class="material-icons-outlined md-18">business_center</i>Project
         </button>
         <button
           id="task-btn"
-          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4 font-semibold text-stone-500"
           onclick="showInfo('task')"
         >
           <i class="material-icons-outlined md-18">task</i>My Task
         </button>
         <button
           id="team-btn"
-          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4 font-semibold text-stone-500"
           onclick="showInfo('team')"
         >
           <i class="material-icons-outlined md-18">group</i>Team
         </button>
         <button
           id="file-btn"
-          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4 font-semibold text-stone-500"
           onclick="showInfo('file')"
         >
           <i class="material-icons-outlined md-18">description</i>File
         </button>
         <button
           id="calendar-btn"
-          class="py-3 flex flex-row justify-start items-center gap-2 mb-10 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 mb-10 rounded-lg px-4 font-semibold text-stone-500"
           onclick="showInfo('calendar')"
         >
           <i class="material-icons-outlined md-18">calendar_month</i>Calender
         </button>
 
         <!-- Insights -->
-        <h2 class="font-semibold mb-1">Insights</h2>
+        <h2 class="font-bold mb-1 text-stone-600">Insights</h2>
         <button
           id="inbox-btn"
-          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4"
+          class="py-3 flex flex-row justify-start items-center gap-2 rounded-lg px-4 font-semibold text-stone-500"
           onclick="showInfo('inbox')"
         >
           <i class="material-icons-outlined md-18">mail</i>Inbox
@@ -130,7 +136,7 @@
         <!-- Profile -->
         <button
           id="profile-btn"
-          class="absolute bottom-4 py-3 px-4 flex flex-row justify-start items-center gap-2 rounded-lg"
+          class="absolute bottom-4 py-3 px-4 flex flex-row justify-start items-center gap-2 rounded-lg font-semibold text-stone-500"
           onclick="showInfo('profile')"
         >
           <i class="material-icons-outlined md-18 text-stone-600"
@@ -143,12 +149,12 @@
         <div class="flex flex-row justify-between">
           <div class="flex flex-row gap-2 items-center">
             <button
-              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10 bg-stone-100 font-semibold"
+              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10 bg-stone-100 font-semibold text-sm"
             >
               <i class="material-icons-outlined md-18">view_agenda</i>List
             </button>
             <button
-              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10"
+              class="border border-stone-300 flex flex-row justify-center items-center gap-2 rounded-lg py-[6px] px-8 h-10 text-sm"
             >
               <i class="material-icons-outlined md-18">grid_view</i>Board
             </button>
@@ -167,7 +173,7 @@
 
         <!-- Project headings -->
         <div
-          class="flex flex-row shadow-md py-2 bg-stone-50 rounded-lg items-center"
+          class="flex flex-row shadow-md py-2 bg-stone-50 rounded-lg items-center mb-2"
         >
           <h4
             class="text-xs font-semibold text-stone-500 flex justify-center items-center"
@@ -201,57 +207,8 @@
           </h4>
         </div>
 
-        <!-- Project card -->
-        <div class="flex flex-row py-4 shadow-md rounded-lg items-center mt-2">
-          <div
-            class="flex flex-row justify-center items-center gap-4"
-            style="width: 40%"
-          >
-            <div class="p-2 text-stone-600">
-              <i class="material-icons-outlined md-18">account_circle</i>
-            </div>
-            <div class="flex flex-col gap-0">
-              <h4 class="text-sm font-semibold">World Wildlife Redesign</h4>
-              <p class="text-xs font-semibold text-stone-400">Oct 13, 2021</p>
-            </div>
-          </div>
-          <div
-            class="flex bg-teal-50 text-sm font-semibold rounded-md py-2 justify-center items-center"
-            style="width: 13%"
-          >
-            3d, 12m
-          </div>
-          <div
-            class="flex flex-col justify-center items-center"
-            style="width: 13%"
-          >
-            <h4 class="text-sm font-semibold">90/148</h4>
-            <p class="text-xs font-semibold text-stone-400">Tasks</p>
-          </div>
-          <div
-            class="flex flex-col gap-0 justify-center items-center"
-            style="width: 14%"
-          >
-            <div class="flex flex-row gap-1 text-sm text-blue-300">
-              <i class="material-icons-outlined md-18">linear_scale</i>Progress
-            </div>
-            <input type="range" class="status-range" title="range" />
-          </div>
-          <div
-            class="flex flex-row gap-2 justify-center items-center text-sm"
-            style="width: 20%"
-          >
-            <div class="flex flex-row justify-between text-stone-600">
-              <i class="material-icons-outlined icon">account_circle</i>
-              <i class="material-icons-outlined icon">account_circle</i>
-              <i class="material-icons-outlined icon">account_circle</i>
-            </div>
-            <i class="material-icons-outlined md-18">more_vert</i>
-          </div>
-        </div>
-
         <!-- Content will be dynamically generated and populated here -->
-        <div id="content"></div>
+        <div id="content" class="flex flex-col gap-2"></div>
       </div>
 
       <aside
@@ -259,24 +216,24 @@
         style="width: 20%"
       >
         <div class="flex flex-row justify-between py-2">
-          <h2 class="font-semibold text-lg">Upcoming meetings</h2>
+          <h2 class="font-bold text-lg text-stone-600">Upcoming meetings</h2>
           <h3 class="underline font-medium text-indigo-500">See all</h3>
         </div>
         <div class="flex flex-col bg-teal-50 rounded-2xl py-2 px-3 gap-3">
-          <h2 class="font-semibold text-lg">Meeting Name</h2>
-          <p class="text-xs">
+          <h2 class="font-bold text-lg text-stone-600">Meeting Name</h2>
+          <p class="text-xs text-stone-500">
             The meeting aims to identify areas for improvement and ensure the
-            designs align with user needs and business goals
+            designs align with user needs and business goals.
           </p>
           <div class="flex flex-col rounded-2xl bg-white p-3 gap-3">
             <div class="flex flex-row justify-between">
               <div class="flex flex-col gap-0">
                 <h3 class="text-xs">Time</h3>
-                <p class="font-semibold">12:00-12:30</p>
+                <p class="font-semibold text-stone-800">12:00-12:30</p>
               </div>
               <div class="flex flex-col gap-0">
                 <h3 class="text-xs">Duration</h3>
-                <p class="font-semibold">30 min</p>
+                <p class="font-semibold text-stone-800">30 min</p>
               </div>
             </div>
             <div class="flex flex-col gap-1">
@@ -296,12 +253,16 @@
           </div>
         </div>
         <div>
-          <h2 class="font-semibold text-lg my-3">Upcoming Task</h2>
+          <h2 class="font-semibold text-lg my-3 text-stone-600">
+            Upcoming Task
+          </h2>
           <div
             class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
           >
             <div class="flex flex-row justify-between items-center">
-              <h3 class="font-semibold text-sm">Product Planning</h3>
+              <h3 class="font-semibold text-sm text-stone-600">
+                Product Planning
+              </h3>
               <div class="flex flex-row gap-1 justify-center items-center">
                 <div
                   class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
@@ -326,14 +287,16 @@
                 </div>
               </div>
             </div>
-            <h4 class="text-sm font-medium">Management</h4>
+            <h4 class="text-sm font-medium text-stone-500">Management</h4>
           </div>
 
           <div
             class="flex flex-col p-2 gap-1 shadow-lg rounded-md border border-stone-200 mb-2"
           >
             <div class="flex flex-row justify-between items-center">
-              <h3 class="font-semibold text-sm">Product Planning</h3>
+              <h3 class="font-semibold text-sm text-stone-600">
+                Product Planning
+              </h3>
               <div class="flex flex-row gap-1 justify-center items-center">
                 <div
                   class="bg-orange-100 h-4 rounded-full font-medium text-xs text-orange-300 px-3"
@@ -358,10 +321,83 @@
                 </div>
               </div>
             </div>
-            <h4 class="text-sm font-medium">Management</h4>
+            <h4 class="text-sm font-medium text-stone-500">Management</h4>
           </div>
         </div>
       </aside>
+    </div>
+
+    <!-- Modal windows will go here -->
+
+    <!-- Create new project Modal -->
+    <div
+      id="newProjectModal"
+      class="hidden fixed inset-0 overflow-auto z-5 justify-center items-center bg-black bg-opacity-50 backdrop-blur-sm"
+    >
+      <div class="bg-stone-50 p-6 rounded-lg relative">
+        <span
+          id="closeProjectModalBtn"
+          class="absolute top-0 right-0 mt-4 mr-6 cursor-pointer text-3xl font-bold text-stone-700"
+          >&times;</span
+        >
+        <h2 class="text-xl text-stone-700 font-bold mb-4">
+          Create a new project
+        </h2>
+        <form id="newProjectForm" class="w-full max-w-lg">
+          <div class="mb-4">
+            <label
+              for="title"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Title:</label
+            >
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="description"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Description:</label
+            >
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              cols="50"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            ></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="dueDate"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Due Date:</label
+            >
+            <input
+              type="datetime-local"
+              id="dueDate"
+              name="dueDate"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

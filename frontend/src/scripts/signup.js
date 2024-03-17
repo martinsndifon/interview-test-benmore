@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Send data to backend endpoint using jQuery Ajax
       $.ajax({
         url: 'http://192.168.0.3:8000/api/user/create/',
         type: 'POST',

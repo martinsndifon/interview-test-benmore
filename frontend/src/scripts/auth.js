@@ -7,9 +7,7 @@ if (token) {
     headers: {
       Authorization: 'Token ' + token,
     },
-    success: (response) => {
-      console.log('Authenticated');
-    },
+    success: (response) => {},
     error: function (xhr, status, error) {
       window.location.href = 'signin.html';
     },
