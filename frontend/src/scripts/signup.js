@@ -15,20 +15,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      console.log('Name:', name);
-      console.log('Email:', email);
-      console.log('Password:', password);
-
       // Send data to backend endpoint using jQuery Ajax
       $.ajax({
-        url: 'YOUR_BACKEND_ENDPOINT_URL',
+        url: 'http://192.168.0.3:8000/api/user/create/',
         type: 'POST',
-        data: {
+        contentType: 'application/json',
+        data: JSON.stringify({
           name: name,
           email: email,
           password: password,
-        },
-        success: function (response) {
+        }),
+        success: () => {
           window.location.href = 'signin.html';
         },
         error: function (xhr, status, error) {
