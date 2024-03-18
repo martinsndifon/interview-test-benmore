@@ -69,7 +69,7 @@ function showInfo(info) {
 
       if (token) {
         $.ajax({
-          url: 'http://192.168.0.3:8000/api/project/',
+          url: 'https://interview-test-benmore.onrender.com/api/project/',
           type: 'GET',
           headers: {
             Authorization: 'Token ' + token,

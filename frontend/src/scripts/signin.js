@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const password = document.getElementById('password').value;
 
       $.ajax({
-        url: 'http://192.168.0.3:8000/api/user/token/',
+        url: 'https://interview-test-benmore.onrender.com/api/user/token/',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ email: email, password: password }),

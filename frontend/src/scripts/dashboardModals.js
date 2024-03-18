@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (token) {
       $.ajax({
-        url: 'http://192.168.0.3:8000/api/project/',
+        url: 'https://interview-test-benmore.onrender.com/api/project/',
         type: 'POST',
         contentType: 'application/json',
         headers: {

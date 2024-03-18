@@ -2,7 +2,7 @@ const token = localStorage.getItem('Token');
 
 if (token) {
   $.ajax({
-    url: 'http://192.168.0.3:8000/api/user/me/',
+    url: 'https://interview-test-benmore.onrender.com/api/user/me/',
     type: 'GET',
     headers: {
       Authorization: 'Token ' + token,

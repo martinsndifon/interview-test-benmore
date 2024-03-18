@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       $.ajax({
-        url: 'http://192.168.0.3:8000/api/user/create/',
+        url: 'https://interview-test-benmore.onrender.com/api/user/create/',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
