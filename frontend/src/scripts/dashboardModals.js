@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const openModalButton = document.getElementById('openProjectModalBtn');
   const closeModalButton = document.getElementById('closeProjectModalBtn');
   const modal = document.getElementById('newProjectModal');
+  const submitProjectBtn = document.getElementById('submitProjectBtn');
 
   openModalButton.onclick = function () {
     modal.classList.remove('hidden');
@@ -23,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const myForm = document.getElementById('newProjectForm');
   myForm.addEventListener('submit', function (event) {
     event.preventDefault();
+    submitProjectBtn.disabled = true;
+
     const formData = new FormData(myForm);
 
     const title = formData.get('title');
@@ -50,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         error: function (xhr, status, error) {
           console.error('Error:', error);
+          submitProjectBtn.disabled = false;
           alert('Failed to create property. Please try again.');
         },
       });

@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const submitBtn = document.getElementById('submitBtn');
   showModal();
 
   document
     .getElementById('signinForm')
     .addEventListener('submit', function (event) {
       event.preventDefault();
+      submitBtn.disabled = true;
+      console.log('reached');
 
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
@@ -20,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         error: function (xhr, status, error) {
           console.error('Error:', error);
+          submitBtn.disabled = false;
           alert('Failed to sign in. Please try again.');
         },
       });

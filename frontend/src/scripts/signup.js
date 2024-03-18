@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const submitBtn = document.getElementById('submitBtn');
   showModal();
 
   document
     .getElementById('signupForm')
     .addEventListener('submit', function (event) {
       event.preventDefault();
+      submitBtn.disabled = true;
 
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
@@ -12,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (password.length < 5) {
         alert('Password must be at least 5 characters long');
+        submitBtn.disabled = false;
         return;
       }
 
@@ -29,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         error: function (xhr, status, error) {
           console.error('Error:', error);
+          submitBtn.disabled = false;
           alert('Failed to sign up. Please try again.');
         },
       });
